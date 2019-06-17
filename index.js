@@ -1,6 +1,6 @@
 function typing(body, note) {
 	var str = "你好——我在玩混乱冒险。☔",
-		i = -1, br1 = 5;
+		i = -1, br1 = 3;
 
     timer = setInterval(function () {
         if (++i >= str.length) {
