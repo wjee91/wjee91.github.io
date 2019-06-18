@@ -86,6 +86,10 @@ body {
     position: relative;
 }
 
+em {
+    display: none;
+}
+
 #view {
     position: absolute;
     left: 10px;
