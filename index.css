@@ -83,11 +83,14 @@ html, body {
     font-family: monospace;
 }
 
+body {
+    position: relative;
+}
+
 #view {
     position: absolute;
     left: 10px;
     top: 10px;
-    cursor: pointer;
 }
 
 #note {
@@ -97,7 +100,36 @@ html, body {
     top: 40px;
     line-height: 40px;
     text-align: left;
-    z-index: 100;
+    z-index: 80;
     font-size: 20px;
     font-weight: 900;
+}
+
+@keyframes scaleDraw {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}
+
+#bubble {
+    position: relative;
+    left: 130px;
+    top: 200px;
+    width: 100px;
+    height: 100px;
+    z-index: 90;
+    cursor: pointer;
+    -webkit-animation-name: scaleDraw;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 5s;
 }
