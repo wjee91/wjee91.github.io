@@ -1,8 +1,4 @@
-function typing(flag, body, note) {
-    if (flag === false) {
-        return;
-    }
-
+function typing(body, note) {
     var str = "子曰——学而时习之。AbC123。☔",
         i = -1, br1 = 3, br2 = 9;
 
@@ -295,7 +291,7 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note"),
         divBubble = document.getElementById("bubble"),
-        divMusic = document.getElementById("music");
+        divOpen = document.getElementById("open");
 
     function playAudio(sound) {
         var playPromise = sound.play();
@@ -319,28 +315,39 @@ function main() {
     };
 
     // init
-    var doTyping = true,
+    var isPopped = false,
+        isPlayed = false,
         waterRippleEffect = new WaterRipple(divView, settings);
 
     // on click
     divBubble.addEventListener("click", function (e) {
-        //$("#bubble").hide("explode", {pieces: 100}, 500, function () {$(this).remove();});
-        $("img").explode({
-            maxWidth: 16,
-            minWidth: 4,
-            radius: 200,
-            explodeTime: 300,
-            release: false,
-            recycle: false,
-            canvas: true,
-            round: true,
-            maxAngle: 360,
-            gravity: 10,
-            groundDistance: 3000
-        }, function () {$(this).remove();});
-        playAudio(divMusic);
-        typing(doTyping, divBody, divNote);
-        doTyping = false;
+        timer = setInterval(function () {
+            if (!isPopped) {
+                isPopped = true;
+                $("img").explode({
+                    maxWidth: 16,
+                    minWidth: 4,
+                    radius: 200,
+                    explodeTime: 250,
+                    release: false,
+                    recycle: false,
+                    canvas: true,
+                    round: true,
+                    maxAngle: 360,
+                    gravity: 10,
+                    groundDistance: 4096
+                });
+            }
+            else {
+                divBubble.remove();
+            }
+        }, 500);
+
+        if (!isPlayed) {
+            isPlayed = true;
+            playAudio(divOpen);
+            typing(divBody, divNote);
+        }
     });
 
     divView.addEventListener("click", function (e) {

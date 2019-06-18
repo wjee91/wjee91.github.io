@@ -75,7 +75,7 @@ input, textarea, select {
 }
 
 html, body {
-    background: #484848;
+    background: purple;
     position: fixed;
     overflow: hidden;
     width: 100%;
