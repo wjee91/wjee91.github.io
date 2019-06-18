@@ -3,7 +3,14 @@ function typing(body, note) {
         i = -1, br1 = 3, br2 = 9;
 
     timer = setInterval(function () {
-        if (++i >= str.length) {
+        if (++i < str.length) {
+            note.innerHTML += str[i];
+
+            if (i == br1 || i == br2) {
+                note.innerHTML += "<br/>";
+            }
+        }
+        else {
             body.addEventListener("click", function () {
                 $("#note").fadeOut(2500, function () {$(this).remove();});
             });
@@ -17,13 +24,6 @@ function typing(body, note) {
             });
 
             clearInterval(timer);
-        }
-        else {
-            note.innerHTML += str[i];
-
-            if (i == br1 || i == br2) {
-                note.innerHTML += "<br/>";
-            }
         }
     }, 250);
 }
@@ -341,6 +341,7 @@ function main() {
             }
             else {
                 divBubble.remove();
+                clearInterval(timer);
             }
         }, 500);
 
