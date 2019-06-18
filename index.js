@@ -1,6 +1,6 @@
 function typing(body, note) {
-	var str = "你好——我在玩混乱冒险。☔",
-		i = -1, br1 = 3;
+    var str = "你好——我在玩混乱冒险。☔",
+        i = -1, br1 = 3;
 
     timer = setInterval(function () {
         if (++i >= str.length) {
@@ -286,22 +286,22 @@ function WaterRipple(element, settings) {
 }
 
 function main() {
-	// div
-	var divBody = document.getElementById("body"),
-		divView = document.getElementById("view"),
-		divNote = document.getElementById("note"),
-		divPlayer = document.getElementById("player");
+    // div
+    var divBody = document.getElementById("body"),
+        divView = document.getElementById("view"),
+        divNote = document.getElementById("note"),
+        divPlayer = document.getElementById("player");
 
-	function playAudio(player) {
-		var playPromise = player.play();
+    function playAudio(player) {
+        var playPromise = player.play();
 
-		if (playPromise !== undefined) {
-			playPromise.then(_ => {
-			})
-			.catch(error => {
-			});
-		}
-	}
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+            })
+            .catch(error => {
+            });
+        }
+    }
 
     // settings - params for WaterRippleEffect
     var settings = {
@@ -317,8 +317,8 @@ function main() {
     var waterRippleEffect = new WaterRipple(divView, settings);
 
     // on click
-	divBody.addEventListener("click", function (e) {
-		playAudio(divPlayer);
+    divBody.addEventListener("click", function (e) {
+        playAudio(divPlayer);
     });
 
     divView.addEventListener("click", function (e) {
@@ -328,8 +328,8 @@ function main() {
     });
 
     // on mousemove
-	divBody.addEventListener("mousemove", function (e) {
-		playAudio(divPlayer);
+    divBody.addEventListener("mousemove", function (e) {
+        playAudio(divPlayer);
     });
 
     divView.addEventListener("mousemove", function (e) {
@@ -339,8 +339,8 @@ function main() {
     });
 
     // on touchmove
-	divBody.addEventListener("touchmove", function (e) {
-		playAudio(divPlayer);
+    divBody.addEventListener("touchmove", function (e) {
+        playAudio(divPlayer);
     });
 
     divView.addEventListener("touchmove", function (e) {
@@ -349,7 +349,7 @@ function main() {
         waterRippleEffect.disturb(mouseX, mouseY);
     });
 
-	typing(divBody, divNote);
+    typing(divBody, divNote);
 }
 
 main();
