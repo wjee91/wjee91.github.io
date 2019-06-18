@@ -291,6 +291,7 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note"),
         divBubble = document.getElementById("bubble"),
+        divPop = document.getElementById("pop"),
         divOpen = document.getElementById("open");
 
     function playAudio(sound) {
@@ -345,6 +346,7 @@ function main() {
 
         if (!isPlayed) {
             isPlayed = true;
+            playAudio(divPop);
             playAudio(divOpen);
             typing(divBody, divNote);
         }
