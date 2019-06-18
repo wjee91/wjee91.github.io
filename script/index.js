@@ -295,10 +295,10 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note"),
         divBubble = document.getElementById("bubble"),
-        divPlayer = document.getElementById("player");
+        divMusic = document.getElementById("music");
 
-    function playAudio(player) {
-        var playPromise = player.play();
+    function playAudio(sound) {
+        var playPromise = sound.play();
 
         if (playPromise !== undefined) {
             playPromise.then(_ => {
@@ -324,8 +324,21 @@ function main() {
 
     // on click
     divBubble.addEventListener("click", function (e) {
-        $("#bubble").hide("explode", {pieces: 100}, 500, function () {$(this).remove();});
-        playAudio(divPlayer);
+        //$("#bubble").hide("explode", {pieces: 100}, 500, function () {$(this).remove();});
+        $("img").explode({
+            maxWidth: 16,
+            minWidth: 4,
+            radius: 200,
+            explodeTime: 300,
+            release: false,
+            recycle: false,
+            canvas: true,
+            round: true,
+            maxAngle: 360,
+            gravity: 10,
+            groundDistance: 3000
+        }, function () {$(this).remove();});
+        playAudio(divMusic);
         typing(doTyping, divBody, divNote);
         doTyping = false;
     });

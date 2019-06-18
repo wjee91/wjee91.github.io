@@ -122,10 +122,10 @@ body {
 
 #bubble {
     position: relative;
-    left: 130px;
+    left: 120px;
     top: 200px;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     z-index: 90;
     cursor: pointer;
     -webkit-animation-name: scaleDraw;
