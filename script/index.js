@@ -315,15 +315,15 @@ function main() {
     };
 
     // init
-    var isPopped = false,
+    var isClicked = false,
         isPlayed = false,
         waterRippleEffect = new WaterRipple(divView, settings);
 
     // on click
     divBubble.addEventListener("click", function (e) {
         timer = setInterval(function () {
-            if (!isPopped) {
-                isPopped = true;
+            if (!isClicked) {
+                isClicked = true;
                 $("img").explode({
                     maxWidth: 16,
                     minWidth: 4,
