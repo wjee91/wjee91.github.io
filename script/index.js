@@ -325,7 +325,7 @@ function main() {
             if (!isClicked) {
                 isClicked = true;
                 $("img").explode({
-                    maxWidth: 16,
+                    maxWidth: 12,
                     minWidth: 4,
                     radius: 200,
                     explodeTime: 250,
