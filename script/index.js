@@ -2,7 +2,7 @@ function typing(body, note) {
     var str = "子曰——学而时习之。AbC123。☔",
         i = -1, br1 = 3, br2 = 9;
 
-    timer = setInterval(function () {
+    typingTimer = setInterval(function () {
         if (++i < str.length) {
             note.innerHTML += str[i];
 
@@ -23,7 +23,7 @@ function typing(body, note) {
                 $("#note").fadeOut(2500, function () {$(this).remove();});
             });
 
-            clearInterval(timer);
+            clearInterval(typingTimer);
         }
     }, 250);
 }
@@ -322,7 +322,7 @@ function main() {
 
     // on click
     divBubble.addEventListener("click", function (e) {
-        timer = setInterval(function () {
+        explodeTimer = setInterval(function () {
             if (!isClicked) {
                 isClicked = true;
                 $("img").explode({
@@ -341,7 +341,7 @@ function main() {
             }
             else {
                 divBubble.remove();
-                clearInterval(timer);
+                clearInterval(explodeTimer);
             }
         }, 500);
 
