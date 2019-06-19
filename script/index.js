@@ -1,3 +1,29 @@
+function makeNewPos(settings) {
+    var x = Math.floor(Math.random() * settings.width * 0.5) + 50,
+        y = Math.floor(Math.random() * settings.height * 0.5) + 50;
+
+    return [x, y];
+}
+
+function calcSpeed(prev, next) {
+    var x = Math.abs(prev[0] - next[0]),
+        y = Math.abs(prev[1] - next[1]),
+        greater = x > y ? x : y,
+        modifier = 0.05;
+
+    return Math.ceil(greater / modifier);
+}
+
+function animateDiv(div, settings) {
+    var prev = div.offset(),
+        next = makeNewPos(settings),
+        speed = calcSpeed([prev.left, prev.top], next);
+
+    div.animate({left: next[0], top: next[1]}, speed, function() {
+        animateDiv(div, settings);        
+    });
+}
+
 function typing(zone, note) {
     var str = "子曰——学而时习之。不亦说乎。🌈",
         i = -1, br1 = 3, br2 = 9;
@@ -294,17 +320,6 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
 
-    function playAudio(sound) {
-        var playPromise = sound.play();
-
-        if (playPromise !== undefined) {
-            playPromise.then(_ => {
-            })
-            .catch(error => {
-            });
-        }
-    }
-
     // settings - params for WaterRippleEffect
     var settings = {
         image: "image/background.png", // image path
@@ -319,6 +334,19 @@ function main() {
     var isClicked = false,
         isPlayed = false,
         waterRippleEffect = new WaterRipple(divView, settings);
+
+    function playAudio(sound) {
+        var playPromise = sound.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+            })
+            .catch(error => {
+            });
+        }
+    }
+
+    animateDiv($("#bubble"), settings);
 
     // on click
     divBubble.addEventListener("click", function () {
