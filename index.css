@@ -75,16 +75,12 @@ input, textarea, select {
 }
 
 html, body {
-    background: #484848;
+    background: blue;
     position: fixed;
     overflow: hidden;
     width: 100%;
     height: 100%;
     font-family: monospace;
-}
-
-body {
-    position: relative;
 }
 
 #view {
