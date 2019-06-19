@@ -327,15 +327,15 @@ function main() {
                 $("img").explode({
                     maxWidth: 12,
                     minWidth: 4,
+                    maxAngle: 360,
                     radius: 400,
                     explodeTime: 250,
-                    release: false,
-                    recycle: false,
+                    gravity: 10,
+                    groundDistance: 4096,
                     canvas: true,
                     round: true,
-                    maxAngle: 360,
-                    gravity: 10,
-                    groundDistance: 4096
+                    recycle: false,
+                    release: false
                 });
             }
             else {
