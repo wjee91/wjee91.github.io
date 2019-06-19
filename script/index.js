@@ -328,7 +328,7 @@ function main() {
                     maxWidth: 12,
                     minWidth: 4,
                     maxAngle: 360,
-                    radius: 250,
+                    radius: 400,
                     explodeTime: 250,
                     gravity: 10,
                     groundDistance: 4096,
