@@ -83,24 +83,6 @@ html, body {
     font-family: monospace;
 }
 
-#view {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-}
-
-#note {
-    color: #fff;
-    position: absolute;
-    left: 40px;
-    top: 40px;
-    line-height: 40px;
-    text-align: left;
-    z-index: 80;
-    font-size: 20px;
-    font-weight: 900;
-}
-
 @keyframes scaleDraw {
     0% {
         transform: scale(1);
@@ -128,4 +110,22 @@ html, body {
     -webkit-animation-timing-function: ease-in-out;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-duration: 5s;
+}
+
+#view {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#note {
+    color: #fff;
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    line-height: 40px;
+    text-align: left;
+    z-index: 80;
+    font-size: 20px;
+    font-weight: 900;
 }
