@@ -26,32 +26,27 @@ function animateElement(element, settings) {
 
 function typing(zone, note) {
     var s = "子曰——学而时习之。不亦说乎。🌈",
-        i = -1, br1 = 3, br2 = 9;
+        i = -1, n = s.length, l = [0, 4, 10, n];
 
     typingTimer = setInterval(function () {
-        if (++i < s.length) {
-            note.innerHTML += s[i];
-
-            if (i == br1 || i == br2) {
-                note.innerHTML += "<br/>";
+        if (++i < n) {
+            if (l.includes(i)) {
+                note.innerHTML = s[i];
+                $("#note").fadeIn(500);
+            }
+            else if (l.includes(i + 1)) {
+                note.innerHTML += s[i];
+                $("#note").fadeOut(500);
+            }
+            else {
+                note.innerHTML += s[i];
             }
         }
         else {
-            zone.addEventListener("click", function () {
-                $("#note").fadeOut(2500, function () {$(this).remove();});
-            });
-
-            zone.addEventListener("mousemove", function () {
-                $("#note").fadeOut(2500, function () {$(this).remove();});
-            });
-
-            zone.addEventListener("touchmove", function () {
-                $("#note").fadeOut(2500, function () {$(this).remove();});
-            });
-
+            note.remove();
             clearInterval(typingTimer);
         }
-    }, 250);
+    }, 375);
 }
 
 function WaterRipple(element, settings) {
@@ -101,13 +96,13 @@ function WaterRipple(element, settings) {
         last_map = [];
 
     var canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
-        element.appendChild(canvas);
+    canvas.width = width;
+    canvas.height = height;
+    element.appendChild(canvas);
 
     var ctx = canvas.getContext("2d");
-        ctx.fillStyle = settings.bgColor;
-        ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = settings.bgColor;
+    ctx.fillRect(0, 0, width, height);
 
     window.requestAnimationFrame = (function () {
         return window.requestAnimationFrame       ||
@@ -296,9 +291,9 @@ function WaterRipple(element, settings) {
 
         // 计算当前像素点下一时刻的振幅
         var amplitude = top + bottom + left + right;
-            amplitude >>= 1;
-            amplitude -= old_amplitude;
-            amplitude -= amplitude >> attenuation; // 计算衰减
+        amplitude >>= 1;
+        amplitude -= old_amplitude;
+        amplitude -= amplitude >> attenuation; // 计算衰减
 
         return amplitude;
     }
@@ -322,17 +317,16 @@ function main() {
 
     // settings - params for WaterRippleEffect
     var settings = {
-        image: "image/background.png", // image path
-        dropRadius: 3, // ripple radius
-        width: 340, // width
-        height: 544, // height
+        image: "image/background.png",
+        dropRadius: 3,
+        width: 340,
+        height: 544,
         delay: 1, // if auto param === true, 1 === 1 second delay for animation
         auto: 1 // if auto param === true, animation starts on its own
     };
 
     // init
-    var isClicked = false,
-        isPlayed = false,
+    var isClicked = false, isPlayed = false,
         waterRippleEffect = new WaterRipple(divView, settings);
 
     function playAudio(sound) {
@@ -382,22 +376,19 @@ function main() {
     });
 
     divView.addEventListener("click", function (e) {
-        var mouseX = e.layerX,
-            mouseY = e.layerY;
+        var mouseX = e.layerX, mouseY = e.layerY;
         waterRippleEffect.disturb(mouseX, mouseY);
     });
 
     // on mousemove
     divView.addEventListener("mousemove", function (e) {
-        var mouseX = e.layerX,
-            mouseY = e.layerY;
+        var mouseX = e.layerX, mouseY = e.layerY;
         waterRippleEffect.disturb(mouseX, mouseY);
     });
 
     // on touchmove
     divView.addEventListener("touchmove", function (e) {
-        var mouseX = e.layerX,
-            mouseY = e.layerY;
+        var mouseX = e.layerX, mouseY = e.layerY;
         waterRippleEffect.disturb(mouseX, mouseY);
     });
 }
