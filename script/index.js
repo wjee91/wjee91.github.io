@@ -1,5 +1,5 @@
 function typing(view, note) {
-    var str = "子曰——学而时习之。AbC123。☔",
+    var str = "子曰——学而时习之。AbC123。🌈",
         i = -1, br1 = 3, br2 = 9;
 
     typingTimer = setInterval(function () {
@@ -328,7 +328,7 @@ function main() {
                     maxWidth: 12,
                     minWidth: 4,
                     maxAngle: 360,
-                    radius: 320,
+                    radius: 360,
                     explodeTime: 250,
                     gravity: 10,
                     groundDistance: 4096,
