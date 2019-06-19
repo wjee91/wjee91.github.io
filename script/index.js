@@ -277,8 +277,8 @@ function WaterRipple(element, settings) {
         return amplitude;
     }
 
-    this.disturb = function (a, b) {
-        disturb(a, b);
+    this.disturb = function (x, y) {
+        disturb(x, y);
     };
 
     loadImage();
@@ -293,12 +293,6 @@ function main() {
         divBubble = document.getElementById("bubble"),
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
-
-    var img = document.createElement("img");
-    img.src = "image/bubble.png";
-    img.width = 120;
-    img.height = 120;
-    divBubble.appendChild(img);
 
     function playAudio(sound) {
         var playPromise = sound.play();
