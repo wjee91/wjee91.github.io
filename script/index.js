@@ -1,6 +1,6 @@
 function makeNewPos(element, settings) {
-    var x = Math.floor(Math.random() * (settings.width - element.width() * 1.2 - 80)) + 50,
-        y = Math.floor(Math.random() * (settings.height - element.height() * 1.2 - 80)) + 50;
+    var x = Math.ceil(Math.random() * (settings.width - element.width() * 1.2 - 80)) + 50,
+        y = Math.ceil(Math.random() * (settings.height - element.height() * 1.2 - 80)) + 50;
 
     return [x, y];
 }
