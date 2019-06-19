@@ -1,4 +1,4 @@
-function typing(body, note) {
+function typing(view, note) {
     var str = "子曰——学而时习之。AbC123。☔",
         i = -1, br1 = 3, br2 = 9;
 
@@ -11,15 +11,15 @@ function typing(body, note) {
             }
         }
         else {
-            body.addEventListener("click", function () {
+            view.addEventListener("click", function () {
                 $("#note").fadeOut(2500, function () {$(this).remove();});
             });
 
-            body.addEventListener("mousemove", function () {
+            view.addEventListener("mousemove", function () {
                 $("#note").fadeOut(2500, function () {$(this).remove();});
             });
 
-            body.addEventListener("touchmove", function () {
+            view.addEventListener("touchmove", function () {
                 $("#note").fadeOut(2500, function () {$(this).remove();});
             });
 
@@ -287,12 +287,11 @@ function WaterRipple(element, settings) {
 
 function main() {
     // div
-    var divBody = document.getElementById("body"),
-        divView = document.getElementById("view"),
-        divNote = document.getElementById("note"),
+    var divPop = document.getElementById("pop"),
+        divOpen = document.getElementById("open"),
         divBubble = document.getElementById("bubble"),
-        divPop = document.getElementById("pop"),
-        divOpen = document.getElementById("open");
+        divView = document.getElementById("view"),
+        divNote = document.getElementById("note");
 
     function playAudio(sound) {
         var playPromise = sound.play();
@@ -349,7 +348,7 @@ function main() {
             isPlayed = true;
             playAudio(divPop);
             playAudio(divOpen);
-            typing(divBody, divNote);
+            typing(divView, divNote);
         }
     });
 
