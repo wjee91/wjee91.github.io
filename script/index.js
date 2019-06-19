@@ -25,12 +25,12 @@ function animateElement(element, settings) {
 }
 
 function typing(zone, note) {
-    var str = "子曰——学而时习之。不亦说乎。🌈",
+    var s = "子曰——学而时习之。不亦说乎。🌈",
         i = -1, br1 = 3, br2 = 9;
 
     typingTimer = setInterval(function () {
-        if (++i < str.length) {
-            note.innerHTML += str[i];
+        if (++i < s.length) {
+            note.innerHTML += s[i];
 
             if (i == br1 || i == br2) {
                 note.innerHTML += "<br/>";
