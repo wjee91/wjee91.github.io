@@ -1,6 +1,6 @@
 function makeNewPos(settings) {
-    var x = Math.floor(Math.random() * settings.width * 0.5) + 40,
-        y = Math.floor(Math.random() * settings.height * 0.5) + 40;
+    var x = Math.floor(Math.random() * settings.width * 0.6) + settings.width * 0.05,
+        y = Math.floor(Math.random() * settings.height * 0.6) + settings.height * 0.05;
 
     return [x, y];
 }
