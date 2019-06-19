@@ -289,8 +289,8 @@ function main() {
     // div
     var divPop = document.getElementById("pop"),
         divOpen = document.getElementById("open"),
-        divBubble = document.getElementById("bubble"),
         divZone = document.getElementById("zone"),
+        divBubble = document.getElementById("bubble"),
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
 
