@@ -32,13 +32,13 @@ function WaterRipple(element, settings) {
     // 默认设置
     var defaults = {
         image: "",
-        dropRadius: 3, // 波源半径
+        dropRadius: 3,
         width: 400,
         height: 400,
         delay: 1,
         attenuation: 5,
         maxAmplitude: 1024,
-        sourceAmplitude: 512, // 震源振幅
+        sourceAmplitude: 512,
         auto: !0
     };
 
@@ -58,8 +58,8 @@ function WaterRipple(element, settings) {
         height = settings.height,
         dropRadius = settings.dropRadius,
         delay = settings.delay * 1000,
-        attenuation = settings.attenuation, // 衰减级别
-        maxAmplitude = settings.maxAmplitude, // 最大振幅
+        attenuation = settings.attenuation,
+        maxAmplitude = settings.maxAmplitude,
         sourceAmplitude = settings.sourceAmplitude,
         half_width = width >> 1,
         half_height = height >> 1,
@@ -178,8 +178,8 @@ function WaterRipple(element, settings) {
             _half_height = half_height,
             _ripple_map = ripple_map,
             _last_map = last_map,
-            _ripple_data = ripple.data, // 引用修改
-            _texture_data = texture.data, // 引用修改
+            _ripple_data = ripple.data,
+            _texture_data = texture.data,
             _new_index = new_index,
             _attenuation = attenuation,
             _maxAmplitude = maxAmplitude;
