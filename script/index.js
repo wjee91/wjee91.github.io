@@ -327,7 +327,7 @@ function main() {
                 $("img").explode({
                     maxWidth: 12,
                     minWidth: 4,
-                    radius: 200,
+                    radius: 400,
                     explodeTime: 250,
                     release: false,
                     recycle: false,
