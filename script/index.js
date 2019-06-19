@@ -1,6 +1,6 @@
-function makeNewPos(settings) {
-    var x = Math.floor(Math.random() * settings.width * 0.6) + settings.width * 0.05,
-        y = Math.floor(Math.random() * settings.height * 0.6) + settings.height * 0.05;
+function makeNewPos(element, settings) {
+    var x = Math.floor(Math.random() * (settings.width - element.width() * 1.2 - 80)) + 50,
+        y = Math.floor(Math.random() * (settings.height - element.height() * 1.2 - 80)) + 50;
 
     return [x, y];
 }
@@ -14,13 +14,13 @@ function calcSpeed(prev, next) {
     return Math.ceil(greater / modifier);
 }
 
-function animateDiv(div, settings) {
-    var prev = div.offset(),
-        next = makeNewPos(settings),
+function animateElement(element, settings) {
+    var prev = element.offset(),
+        next = makeNewPos(element, settings),
         speed = calcSpeed([prev.left, prev.top], next);
 
-    div.animate({left: next[0], top: next[1]}, speed, function() {
-        animateDiv(div, settings);        
+    element.animate({left: next[0], top: next[1]}, speed, function() {
+        animateElement(element, settings);        
     });
 }
 
@@ -346,7 +346,7 @@ function main() {
         }
     }
 
-    animateDiv($("#bubble"), settings);
+    animateElement($("#bubble"), settings);
 
     // on click
     divBubble.addEventListener("click", function () {
