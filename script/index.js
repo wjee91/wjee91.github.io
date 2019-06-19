@@ -1,5 +1,5 @@
 function typing(zone, note) {
-    var str = "子曰——学而时习之。AbC123。🌈",
+    var str = "子曰——学而时习之。不亦说乎。🌈",
         i = -1, br1 = 3, br2 = 9;
 
     typingTimer = setInterval(function () {
