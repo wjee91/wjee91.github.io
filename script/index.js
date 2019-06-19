@@ -1,4 +1,4 @@
-function typing(view, note) {
+function typing(zone, note) {
     var str = "子曰——学而时习之。AbC123。🌈",
         i = -1, br1 = 3, br2 = 9;
 
@@ -11,15 +11,15 @@ function typing(view, note) {
             }
         }
         else {
-            view.addEventListener("click", function () {
+            zone.addEventListener("click", function () {
                 $("#note").fadeOut(2500, function () {$(this).remove();});
             });
 
-            view.addEventListener("mousemove", function () {
+            zone.addEventListener("mousemove", function () {
                 $("#note").fadeOut(2500, function () {$(this).remove();});
             });
 
-            view.addEventListener("touchmove", function () {
+            zone.addEventListener("touchmove", function () {
                 $("#note").fadeOut(2500, function () {$(this).remove();});
             });
 
@@ -290,6 +290,7 @@ function main() {
     var divPop = document.getElementById("pop"),
         divOpen = document.getElementById("open"),
         divBubble = document.getElementById("bubble"),
+        divZone = document.getElementById("zone"),
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
 
@@ -348,7 +349,7 @@ function main() {
             isPlayed = true;
             playAudio(divPop);
             playAudio(divOpen);
-            typing(divView, divNote);
+            typing(divZone, divNote);
         }
     });
 
