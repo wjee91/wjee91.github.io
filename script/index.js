@@ -342,7 +342,7 @@ function main() {
                 divBubble.remove();
                 clearInterval(explodeTimer);
             }
-        }, 500);
+        }, 0);
 
         if (!isPlayed) {
             isPlayed = true;
