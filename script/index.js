@@ -162,7 +162,7 @@ function WaterRipple(element, settings) {
             pixel_deviation, // 偏移后的ImageData对象像素索引
             pixel_source; // 原始ImageData对象像素索引
 
-        // 交互索引 old_index, new_index
+        // 交互索引
         old_index = new_index;
         new_index = i;
 
@@ -196,15 +196,15 @@ function WaterRipple(element, settings) {
                     x_boundary = 2; // 右边边界
                 }
 
-                var top = _ripple_map[_map_index - _width], // 上边的相邻点
-                    bottom = _ripple_map[_map_index + _width], // 下边的相邻点
-                    left = x_boundary != 1 ? _ripple_map[_map_index - 1] : 0, // 左边的相邻点
-                    right = x_boundary != 2 ? _ripple_map[_map_index + 1] : 0; // 右边的相邻点
+                var top = _ripple_map[_map_index - _width], // 上边相邻点
+                    bottom = _ripple_map[_map_index + _width], // 下边相邻点
+                    left = x_boundary != 1 ? _ripple_map[_map_index - 1] : 0, // 左边相邻点
+                    right = x_boundary != 2 ? _ripple_map[_map_index + 1] : 0; // 右边相邻点
 
                 // 计算当前像素点下一时刻的振幅
                 var amplitude = (top + bottom + left + right) >> 1;
                 amplitude -= _ripple_map[_new_index + i];
-                amplitude -= amplitude >> _attenuation;  // 计算衰减
+                amplitude -= amplitude >> _attenuation; // 计算衰减
 
                 // 更新振幅数组
                 _ripple_map[_new_index + i] = amplitude;
@@ -263,10 +263,10 @@ function WaterRipple(element, settings) {
             x_boundary = 2; // 右边边界
         }
 
-        var top = ripple_map[index - width], // 上边的相邻点
-            bottom = ripple_map[index + width], // 下边的相邻点
-            left = x_boundary != 1 ? ripple_map[index - 1] : 0, // 左边的相邻点
-            right = x_boundary != 2 ? ripple_map[index + 1] : 0; // 右边的相邻点
+        var top = ripple_map[index - width], // 上边相邻点
+            bottom = ripple_map[index + width], // 下边相邻点
+            left = x_boundary != 1 ? ripple_map[index - 1] : 0, // 左边相邻点
+            right = x_boundary != 2 ? ripple_map[index + 1] : 0; // 右边相邻点
 
         // 计算当前像素点下一时刻的振幅
         var amplitude = top + bottom + left + right;
