@@ -89,8 +89,8 @@ function WaterRipple(element, settings) {
                window.mozRequestAnimationFrame    ||
                window.oRequestAnimationFrame      ||
                window.msRequestAnimationFrame     ||
-               function (callback) {
-                   window.setTimeout(callback, 1000 / 60);
+               function (e) {
+                   window.setTimeout(e, 1000 / 60);
                };
     })();
 
@@ -294,6 +294,12 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
 
+    var img = document.createElement("img");
+    img.src = "image/bubble.png";
+    img.width = 120;
+    img.height = 120;
+    divBubble.appendChild(img);
+
     function playAudio(sound) {
         var playPromise = sound.play();
 
@@ -321,7 +327,7 @@ function main() {
         waterRippleEffect = new WaterRipple(divView, settings);
 
     // on click
-    divBubble.addEventListener("click", function (e) {
+    divBubble.addEventListener("click", function () {
         explodeTimer = setInterval(function () {
             if (!isClicked) {
                 isClicked = true;
