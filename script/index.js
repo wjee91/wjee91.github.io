@@ -79,10 +79,10 @@ function waterRipple(element, settings) {
         width = settings.width,
         height = settings.height,
         dropRadius = settings.dropRadius,
-        delay = settings.delay * 1000,
         attenuation = settings.attenuation,
         maxAmplitude = settings.maxAmplitude,
         sourceAmplitude = settings.sourceAmplitude,
+        delay = settings.delay * 1000,
         half_width = width >> 1,
         half_height = height >> 1,
         amplitude_size = width * (height + 2) * 2,
@@ -113,7 +113,7 @@ function waterRipple(element, settings) {
                function (e) {
                    window.setTimeout(e, 1000 / 60);
                };
-    })();
+    }) ();
 
     // 加载图片
     function loadImage() {
