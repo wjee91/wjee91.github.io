@@ -53,8 +53,8 @@ function WaterRipple(element, settings) {
     // 默认设置
     var defaults = {
         image: "",
-        width: 400,
-        height: 400,
+        width: 320,
+        height: 320,
         dropRadius: 4,
         attenuation: 6,
         maxAmplitude: 1024,
