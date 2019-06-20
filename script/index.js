@@ -343,7 +343,7 @@ function main() {
             if (next) {
                 curr = nextAudio(len, curr);
             }
-        }, false);
+        });
     }
 
     function stopAudio(audio) {
