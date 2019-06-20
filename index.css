@@ -101,10 +101,10 @@ html, body {
 #bubble {
     position: relative;
     z-index: 90;
-    left: 122px;
-    top: 222px;
-    width: 120px;
-    height: 120px;
+    left: 132px;
+    top: 232px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     -webkit-animation-name: scaleDraw;
     -webkit-animation-timing-function: ease-in-out;
