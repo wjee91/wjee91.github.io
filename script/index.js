@@ -339,7 +339,7 @@ function main() {
             });
         }
 
-        audio.addEventListener('ended', function () {
+        audio.addEventListener("ended", function () {
             if (next) {
                 curr = nextAudio(len, curr);
             }
@@ -351,30 +351,27 @@ function main() {
         audio.currentTime = 0;
     }
 
-    function shuffleAudio(len, curr) {
-        var next;
-
-        do {
-            next = Math.floor(Math.random() * len);
-        } while (next == curr);
-
-        return next;
-    }
-
-    function skipAudio(len, curr) {
-        stopAudio(playlist[curr]);
-        curr = shuffleAudio(len, curr);
-        playAudio(playlist[curr], true);
-        return curr;
-    }
-
     function nextAudio(len, curr) {
+        stopAudio(playlist[curr]);
+
         if (++curr >= len) {
             curr = 0;
         }
 
         playAudio(playlist[curr], true);
         return curr;
+    }
+
+    function shuffleAudio(len, curr) {
+        var next;
+        stopAudio(playlist[curr]);
+
+        do {
+            next = Math.floor(Math.random() * len);
+        } while (next == curr);
+
+        playAudio(playlist[next], true);
+        return next;
     }
 
     animateElement($("#bubble"), settings);
@@ -417,7 +414,7 @@ function main() {
 
         if (isPlayed && ++count >= limit) {
             count = 0;
-            curr = skipAudio(len, curr);
+            curr = shuffleAudio(len, curr);
             count = 0;
         }
     });
