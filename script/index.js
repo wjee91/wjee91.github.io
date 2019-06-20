@@ -326,7 +326,7 @@ function main() {
 
     // init
     var audioList = [divRain, divSkyline, divTravel, divBeethoven],
-        n = audioList.length, curr = 0, count = 0, limit = 8,
+        n = audioList.length, curr = 0, count = 0, limit = 5,
         isClicked = false, isPlayed = false,
         waterRippleEffect = new waterRipple(divView, settings);
 
