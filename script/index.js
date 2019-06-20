@@ -26,7 +26,7 @@ function animateElement(element, settings) {
 
 function typing(note) {
     var s = "子曰——学而时习之。不亦说乎。🌈",
-        i = -1, n = s.length, l = [0, 4, 10, n];
+        n = s.length, i = -1, l = [0, 4, 10, n];
 
     typingTimer = setInterval(function () {
         if (++i < n) {
@@ -325,8 +325,8 @@ function main() {
     };
 
     // init
-    var audioList = [divRain, divSkyline, divTravel, divBeethoven],
-        n = audioList.length, curr = 0, count = 0, limit = 5,
+    var playlist = [divRain, divSkyline, divTravel, divBeethoven],
+        len = playlist.length, curr = 0, count = 0, limit = 5,
         isClicked = false, isPlayed = false,
         waterRippleEffect = new waterRipple(divView, settings);
 
@@ -346,11 +346,11 @@ function main() {
         audio.currentTime = 0;
     }
 
-    function shuffleAudio(curr) {
+    function shuffleAudio(len, curr) {
         var next;
 
         do {
-            next = Math.floor(Math.random() * n);
+            next = Math.floor(Math.random() * len);
         } while (next == curr);
 
         return next;
@@ -386,7 +386,7 @@ function main() {
         if (!isPlayed) {
             isPlayed = true;
             playAudio(divPop);
-            playAudio(audioList[curr]);
+            playAudio(playlist[curr]);
             typing(divNote);
         }
     });
@@ -397,9 +397,9 @@ function main() {
 
         if (isPlayed && ++count >= limit) {
             count = 0;
-            stopAudio(audioList[curr]);
-            curr = shuffleAudio(curr);
-            playAudio(audioList[curr]);
+            stopAudio(playlist[curr]);
+            curr = shuffleAudio(len, curr);
+            playAudio(playlist[curr]);
         }
     });
 
