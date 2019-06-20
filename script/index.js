@@ -60,7 +60,7 @@ function WaterRipple(element, settings) {
         maxAmplitude: 1024,
         sourceAmplitude: 512,
         delay: 1,
-        auto: 1
+        auto: true
     };
 
     // 合并设置
@@ -321,8 +321,8 @@ function main() {
         width: 340,
         height: 544,
         dropRadius: 4,
-        delay: 1, // if auto param === true, 1 === 1 second delay for animation
-        auto: 1 // if auto param === true, animation starts on its own
+        delay: 1,
+        auto: true
     };
 
     // init
