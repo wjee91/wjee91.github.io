@@ -392,8 +392,7 @@ function main() {
     });
 
     divView.addEventListener("click", function (e) {
-        var mouseX = e.layerX, mouseY = e.layerY;
-        waterRippleEffect.disturb(mouseX, mouseY);
+        waterRippleEffect.disturb(e.layerX, e.layerY);
 
         if (isPlayed && ++count >= limit) {
             count = 0;
@@ -405,14 +404,12 @@ function main() {
 
     // on mousemove
     divView.addEventListener("mousemove", function (e) {
-        var mouseX = e.layerX, mouseY = e.layerY;
-        waterRippleEffect.disturb(mouseX, mouseY);
+        waterRippleEffect.disturb(e.layerX, e.layerY);
     });
 
     // on touchmove
     divView.addEventListener("touchmove", function (e) {
-        var mouseX = e.layerX, mouseY = e.layerY;
-        waterRippleEffect.disturb(mouseX, mouseY);
+        waterRippleEffect.disturb(e.layerX, e.layerY);
     });
 }
 
