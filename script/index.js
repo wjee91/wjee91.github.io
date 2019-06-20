@@ -329,7 +329,7 @@ function main() {
         isClicked = false, isPlayed = false,
         waterRippleEffect = new waterRipple(divView, settings);
 
-    function playAudio(audio) {
+    function playAudio(audio, next) {
         var playPromise = audio.play();
 
         if (playPromise !== undefined) {
@@ -338,6 +338,12 @@ function main() {
             .catch(error => {
             });
         }
+
+        audio.addEventListener('ended', function () {
+            if (next) {
+                curr = nextAudio(len, curr);
+            }
+        }, false);
     }
 
     function stopAudio(audio) {
@@ -353,6 +359,22 @@ function main() {
         } while (next == curr);
 
         return next;
+    }
+
+    function skipAudio(len, curr) {
+        stopAudio(playlist[curr]);
+        curr = shuffleAudio(len, curr);
+        playAudio(playlist[curr], true);
+        return curr;
+    }
+
+    function nextAudio(len, curr) {
+        if (++curr >= len) {
+            curr = 0;
+        }
+
+        playAudio(playlist[curr], true);
+        return curr;
     }
 
     animateElement($("#bubble"), settings);
@@ -384,8 +406,8 @@ function main() {
 
         if (!isPlayed) {
             isPlayed = true;
-            playAudio(divPop);
-            playAudio(playlist[curr]);
+            playAudio(divPop, false);
+            playAudio(playlist[curr], true);
             typing(divNote);
         }
     });
@@ -395,9 +417,8 @@ function main() {
 
         if (isPlayed && ++count >= limit) {
             count = 0;
-            stopAudio(playlist[curr]);
-            curr = shuffleAudio(len, curr);
-            playAudio(playlist[curr]);
+            curr = skipAudio(len, curr);
+            count = 0;
         }
     });
 
