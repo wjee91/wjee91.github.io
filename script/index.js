@@ -75,7 +75,8 @@ function WaterRipple(element, settings) {
         return false;
     }
 
-    var width = settings.width,
+    var image,
+        width = settings.width,
         height = settings.height,
         dropRadius = settings.dropRadius,
         delay = settings.delay * 1000,
@@ -90,7 +91,6 @@ function WaterRipple(element, settings) {
         map_index, // 振幅数组索引
         texture, // 原始图像像素信息
         ripple, // 参数波纹的图像像素信息
-        image, // Image对象
         autoRepeat, // 自动产生波源的重复事件
         ripple_map = [],
         last_map = [];
@@ -144,7 +144,7 @@ function WaterRipple(element, settings) {
 
         animate();
 
-        // 如果设置了自动产生波源，则随机参数波源
+        // 随机参数波源
         if (settings.auto) {
             autoRepeat = setInterval(function () {
                 disturb(Math.random() * width, Math.random() * height);
@@ -315,7 +315,7 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
 
-    // settings - params for WaterRippleEffect
+    // params for WaterRippleEffect
     var settings = {
         image: "image/background.png",
         width: 340,
