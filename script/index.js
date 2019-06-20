@@ -5,9 +5,9 @@ function makeNewPos(element, settings) {
     return [x, y];
 }
 
-function calcSpeed(prev, next) {
-    var x = Math.abs(prev[0] - next[0]),
-        y = Math.abs(prev[1] - next[1]),
+function calcSpeed(curr, next) {
+    var x = Math.abs(curr[0] - next[0]),
+        y = Math.abs(curr[1] - next[1]),
         greater = x > y ? x : y,
         modifier = 0.05;
 
@@ -15,9 +15,9 @@ function calcSpeed(prev, next) {
 }
 
 function animateElement(element, settings) {
-    var prev = element.offset(),
+    var curr = element.offset(),
         next = makeNewPos(element, settings),
-        speed = calcSpeed([prev.left, prev.top], next);
+        speed = calcSpeed([curr.left, curr.top], next);
 
     element.animate({left: next[0], top: next[1]}, speed, function() {
         animateElement(element, settings);        
@@ -309,7 +309,10 @@ function waterRipple(element, settings) {
 function main() {
     // div
     var divPop = document.getElementById("pop"),
-        divOpen = document.getElementById("open"),
+        divRain = document.getElementById("rain"),
+        divSkyline = document.getElementById("skyline"),
+        divTravel = document.getElementById("travel"),
+        divBeethoven = document.getElementById("beethoven"),
         divBubble = document.getElementById("bubble"),
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
@@ -322,11 +325,13 @@ function main() {
     };
 
     // init
-    var isClicked = false, isPlayed = false,
+    var audioList = [divRain, divSkyline, divTravel, divBeethoven],
+        n = audioList.length, curr = 0, count = 0, limit = 8,
+        isClicked = false, isPlayed = false,
         waterRippleEffect = new waterRipple(divView, settings);
 
-    function playAudio(sound) {
-        var playPromise = sound.play();
+    function playAudio(audio) {
+        var playPromise = audio.play();
 
         if (playPromise !== undefined) {
             playPromise.then(_ => {
@@ -334,6 +339,21 @@ function main() {
             .catch(error => {
             });
         }
+    }
+
+    function stopAudio(audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+
+    function shuffleAudio(curr) {
+        var next;
+
+        do {
+            next = Math.floor(Math.random() * n);
+        } while (next == curr);
+
+        return next;
     }
 
     animateElement($("#bubble"), settings);
@@ -366,7 +386,7 @@ function main() {
         if (!isPlayed) {
             isPlayed = true;
             playAudio(divPop);
-            playAudio(divOpen);
+            playAudio(audioList[curr]);
             typing(divNote);
         }
     });
@@ -374,6 +394,13 @@ function main() {
     divView.addEventListener("click", function (e) {
         var mouseX = e.layerX, mouseY = e.layerY;
         waterRippleEffect.disturb(mouseX, mouseY);
+
+        if (isPlayed && ++count >= limit) {
+            count = 0;
+            stopAudio(audioList[curr]);
+            curr = shuffleAudio(curr);
+            playAudio(audioList[curr]);
+        }
     });
 
     // on mousemove
