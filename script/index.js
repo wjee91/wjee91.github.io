@@ -56,7 +56,7 @@ function waterRipple(element, settings) {
         width: 320,
         height: 320,
         dropRadius: 4,
-        attenuation: 6,
+        attenuation: 5,
         maxAmplitude: 1024,
         sourceAmplitude: 512,
         delay: 1,
