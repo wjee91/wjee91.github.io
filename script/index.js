@@ -325,7 +325,7 @@ function main() {
 
     // init
     var playlist = [divRain, divSkyline, divTravel, divBeethoven],
-        len = playlist.length, curr = 0, count = 0, limit = 5,
+        len = playlist.length, curr = 0, count = 0, limit = 4,
         isClicked = false, isPlayed = false,
         waterRippleEffect = new waterRipple(divView, settings);
 
