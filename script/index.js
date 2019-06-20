@@ -24,7 +24,7 @@ function animateElement(element, settings) {
     });
 }
 
-function typing(zone, note) {
+function typing(note) {
     var s = "子曰——学而时习之。不亦说乎。🌈",
         i = -1, n = s.length, l = [0, 4, 10, n];
 
@@ -310,7 +310,6 @@ function main() {
     // div
     var divPop = document.getElementById("pop"),
         divOpen = document.getElementById("open"),
-        divZone = document.getElementById("zone"),
         divBubble = document.getElementById("bubble"),
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
@@ -368,7 +367,7 @@ function main() {
             isPlayed = true;
             playAudio(divPop);
             playAudio(divOpen);
-            typing(divZone, divNote);
+            typing(divNote);
         }
     });
 
