@@ -49,7 +49,7 @@ function typing(note) {
     }, 375);
 }
 
-function WaterRipple(element, settings) {
+function waterRipple(element, settings) {
     // 默认设置
     var defaults = {
         image: "",
@@ -274,7 +274,7 @@ function WaterRipple(element, settings) {
         ctx.putImageData(ripple, 0, 0);
     }
 
-    function calculAmplitude(index, old_amplitude) {
+    function calcAmplitude(index, old_amplitude) {
         var x_boundary = 0, judge = map_index % width;
 
         if (judge == 0) {
@@ -314,7 +314,7 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
 
-    // params for WaterRipple
+    // params for waterRipple
     var settings = {
         image: "image/background.png",
         width: 340,
@@ -323,7 +323,7 @@ function main() {
 
     // init
     var isClicked = false, isPlayed = false,
-        waterRipple = new WaterRipple(divView, settings);
+        waterRippleEffect = new waterRipple(divView, settings);
 
     function playAudio(sound) {
         var playPromise = sound.play();
@@ -373,19 +373,19 @@ function main() {
 
     divView.addEventListener("click", function (e) {
         var mouseX = e.layerX, mouseY = e.layerY;
-        waterRipple.disturb(mouseX, mouseY);
+        waterRippleEffect.disturb(mouseX, mouseY);
     });
 
     // on mousemove
     divView.addEventListener("mousemove", function (e) {
         var mouseX = e.layerX, mouseY = e.layerY;
-        waterRipple.disturb(mouseX, mouseY);
+        waterRippleEffect.disturb(mouseX, mouseY);
     });
 
     // on touchmove
     divView.addEventListener("touchmove", function (e) {
         var mouseX = e.layerX, mouseY = e.layerY;
-        waterRipple.disturb(mouseX, mouseY);
+        waterRippleEffect.disturb(mouseX, mouseY);
     });
 }
 
