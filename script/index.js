@@ -19,7 +19,7 @@ function animateElement(element, settings) {
         next = makeNewPos(element, settings),
         speed = calcSpeed([curr.left, curr.top], next);
 
-    element.animate({left: next[0], top: next[1]}, speed, function() {
+    element.animate({left: next[0], top: next[1]}, speed, function () {
         animateElement(element, settings);        
     });
 }
