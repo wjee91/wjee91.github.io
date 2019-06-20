@@ -229,8 +229,8 @@ function waterRipple(element, settings) {
 
                 // 更新振幅数组
                 _ripple_map[_new_index + i] = amplitude;
-
                 amplitude = _maxAmplitude - amplitude;
+
                 var old_amplitude = _last_map[i];
                 _last_map[i] = amplitude;
 
@@ -262,7 +262,6 @@ function waterRipple(element, settings) {
                     _ripple_data[pixel_source] = _texture_data[pixel_deviation];
                     _ripple_data[pixel_source + 1] = _texture_data[pixel_deviation + 1];
                     _ripple_data[pixel_source + 2] = _texture_data[pixel_deviation + 2];
-                    // _ripple.data[pixel_source + 3] = texture.data[pixel_deviation + 3];
                 }
 
                 i++;
