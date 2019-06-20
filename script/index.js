@@ -66,7 +66,7 @@ function WaterRipple(element, settings) {
     // 合并设置
     for (var item in defaults) {
         if (!settings.hasOwnProperty(item)) {
-            settings[item] = defaults[item]
+            settings[item] = defaults[item];
         }
     }
 
@@ -319,10 +319,7 @@ function main() {
     var settings = {
         image: "image/background.png",
         width: 340,
-        height: 544,
-        dropRadius: 4,
-        delay: 1,
-        auto: true
+        height: 544
     };
 
     // init
