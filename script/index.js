@@ -314,7 +314,7 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
 
-    // params for WaterRippleEffect
+    // params for WaterRipple
     var settings = {
         image: "image/background.png",
         width: 340,
@@ -323,7 +323,7 @@ function main() {
 
     // init
     var isClicked = false, isPlayed = false,
-        waterRippleEffect = new WaterRipple(divView, settings);
+        waterRipple = new WaterRipple(divView, settings);
 
     function playAudio(sound) {
         var playPromise = sound.play();
@@ -373,19 +373,19 @@ function main() {
 
     divView.addEventListener("click", function (e) {
         var mouseX = e.layerX, mouseY = e.layerY;
-        waterRippleEffect.disturb(mouseX, mouseY);
+        waterRipple.disturb(mouseX, mouseY);
     });
 
     // on mousemove
     divView.addEventListener("mousemove", function (e) {
         var mouseX = e.layerX, mouseY = e.layerY;
-        waterRippleEffect.disturb(mouseX, mouseY);
+        waterRipple.disturb(mouseX, mouseY);
     });
 
     // on touchmove
     divView.addEventListener("touchmove", function (e) {
         var mouseX = e.layerX, mouseY = e.layerY;
-        waterRippleEffect.disturb(mouseX, mouseY);
+        waterRipple.disturb(mouseX, mouseY);
     });
 }
 
