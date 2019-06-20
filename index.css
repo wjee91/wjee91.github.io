@@ -103,8 +103,8 @@ html, body {
     z-index: 90;
     left: 142px;
     top: 242px;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     -webkit-animation-name: scaleDraw;
     -webkit-animation-timing-function: ease-in-out;
