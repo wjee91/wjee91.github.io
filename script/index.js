@@ -340,7 +340,7 @@ function main() {
         }
     }
 
-    //animateElement($("#bubble"), settings);
+    animateElement($("#bubble"), settings);
 
     // on click
     divBubble.addEventListener("click", function () {
