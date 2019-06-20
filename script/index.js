@@ -53,14 +53,14 @@ function WaterRipple(element, settings) {
     // 默认设置
     var defaults = {
         image: "",
-        dropRadius: 3,
+        dropRadius: 4,
         width: 400,
         height: 400,
         delay: 1,
-        attenuation: 5,
+        auto: 1,
+        attenuation: 6,
         maxAmplitude: 1024,
-        sourceAmplitude: 512,
-        auto: !0
+        sourceAmplitude: 512
     };
 
     // 合并设置
@@ -318,7 +318,7 @@ function main() {
     // settings - params for WaterRippleEffect
     var settings = {
         image: "image/background.png",
-        dropRadius: 3,
+        dropRadius: 4,
         width: 340,
         height: 544,
         delay: 1, // if auto param === true, 1 === 1 second delay for animation
