@@ -339,11 +339,14 @@ function main() {
             });
         }
 
-        audio.addEventListener("ended", function () {
+        audio.onended = function () {
+            console.log("ended = %d", curr);
             if (next) {
+                console.log("next-1 = %d", curr);
                 curr = nextAudio(len, curr);
+                console.log("next-2 = %d", curr);
             }
-        });
+        };
     }
 
     function stopAudio(audio) {
@@ -377,7 +380,7 @@ function main() {
     animateElement($("#bubble"), settings);
 
     // on click
-    divBubble.addEventListener("click", function () {
+    divBubble.onclick = function () {
         explodeTimer = setInterval(function () {
             if (!isClicked) {
                 isClicked = true;
@@ -407,27 +410,29 @@ function main() {
             playAudio(playlist[curr], true);
             typing(divNote);
         }
-    });
+    };
 
-    divView.addEventListener("click", function (e) {
+    divView.onclick = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
 
         if (isPlayed && ++count >= limit) {
             count = 0;
+            console.log("shuffle-1 = %d", curr);
             curr = shuffleAudio(len, curr);
+            console.log("shuffle-2 = %d", curr);
             count = 0;
         }
-    });
+    };
 
     // on mousemove
-    divView.addEventListener("mousemove", function (e) {
+    divView.onmousemove = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
-    });
+    };
 
     // on touchmove
-    divView.addEventListener("touchmove", function (e) {
+    divView.ontouchmove = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
-    });
+    };
 }
 
 main();
