@@ -309,7 +309,11 @@ function main() {
     // div
     var divPop = document.getElementById("pop"),
         divRain = document.getElementById("rain"),
+        divSea = document.getElementById("sea"),
+        divAncientry = document.getElementById("ancientry"),
+        divPast = document.getElementById("past"),
         divSkyline = document.getElementById("skyline"),
+        divStars = document.getElementById("stars"),
         divTravel = document.getElementById("travel"),
         divBeethoven = document.getElementById("beethoven"),
         divBubble = document.getElementById("bubble"),
@@ -324,7 +328,7 @@ function main() {
     };
 
     // init
-    var playlist = [divRain, divSkyline, divTravel, divBeethoven],
+    var playlist = [divRain, divSea, divAncientry, divPast, divSkyline, divStars, divTravel, divBeethoven],
         len = playlist.length, curr = 0, count = 0, limit = 4,
         isClicked = false, isPlayed = false,
         waterRippleEffect = new waterRipple(divView, settings);
@@ -340,11 +344,8 @@ function main() {
         }
 
         audio.onended = function () {
-            console.log("ended = %d", curr);
             if (next) {
-                console.log("next-1 = %d", curr);
                 curr = nextAudio(len, curr);
-                console.log("next-2 = %d", curr);
             }
         };
     }
@@ -417,9 +418,7 @@ function main() {
 
         if (isPlayed && ++count >= limit) {
             count = 0;
-            console.log("shuffle-1 = %d", curr);
             curr = shuffleAudio(len, curr);
-            console.log("shuffle-2 = %d", curr);
             count = 0;
         }
     };
