@@ -1,4 +1,4 @@
-function getPos(element, settings) {
+function calcPos(element, settings) {
     var x = Math.ceil(Math.random() * (settings.width - element.width() * 1.5 - 80)) + 50,
         y = Math.ceil(Math.random() * (settings.height - element.height() * 1.5 - 80)) + 50;
 
@@ -16,7 +16,7 @@ function calcSpeed(curr, next) {
 
 function animateElement(element, settings) {
     var curr = element.offset(),
-        next = getPos(element, settings),
+        next = calcPos(element, settings),
         speed = calcSpeed([curr.left, curr.top], next);
 
     element.animate({left: next[0], top: next[1]}, speed, function () {
@@ -178,8 +178,8 @@ function waterRipple(element, settings) {
     // 渲染下一帧
     function renderRipple() {
         var i = old_index,
-            deviation_x, // x水平方向偏移
-            deviation_y, // y竖直方向偏移
+            deviation_x, // 水平方向偏移
+            deviation_y, // 竖直方向偏移
             pixel_source, // 原始ImageData对象像素索引
             pixel_deviation; // 偏移后的ImageData对象像素索引
 
