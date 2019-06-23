@@ -159,9 +159,9 @@ function waterRipple(element, settings) {
         renderRipple();
     }
 
-    // 在指定地点产生波源
+    // 在指定位置产生波源
     function disturb(circleX, circleY) {
-        // 将值向下取整
+        // 向下取整
         circleX <<= 0;
         circleY <<= 0;
 
@@ -202,8 +202,8 @@ function waterRipple(element, settings) {
             _map_index = map_index,
             _ripple_map = ripple_map,
             _last_map = last_map,
-            _ripple_data = ripple.data,
-            _texture_data = texture.data;
+            _texture_data = texture.data,
+            _ripple_data = ripple.data;
 
         // 渲染所有像素点
         for (var y = 0; y < _height; y++) {
@@ -289,8 +289,7 @@ function waterRipple(element, settings) {
             right = x_boundary != 2 ? ripple_map[index + 1] : 0; // 右边相邻点
 
         // 计算当前像素点下一时刻的振幅
-        var amplitude = top + bottom + left + right;
-        amplitude >>= 1;
+        var amplitude = (top + bottom + left + right) >> 1;
         amplitude -= old_amplitude;
         amplitude -= amplitude >> attenuation;
 
@@ -317,8 +316,8 @@ function main() {
         divTravel = document.getElementById("travel"),
         divBeethoven = document.getElementById("beethoven"),
         divBubble = document.getElementById("bubble"),
-        divNote = document.getElementById("note"),
-        divView = document.getElementById("view");
+        divView = document.getElementById("view"),
+        divNote = document.getElementById("note");
 
     var settings = {
         image: "image/background.png",
