@@ -20,7 +20,7 @@ function animateElement(element, settings) {
         speed = calcSpeed([curr.left, curr.top], next);
 
     element.animate({left: next[0], top: next[1]}, speed, function () {
-        animateElement(element, settings);        
+        animateElement(element, settings);
     });
 }
 
@@ -180,8 +180,8 @@ function waterRipple(element, settings) {
         var i = old_index,
             deviation_x, // x水平方向偏移
             deviation_y, // y竖直方向偏移
-            pixel_deviation, // 偏移后的ImageData对象像素索引
-            pixel_source; // 原始ImageData对象像素索引
+            pixel_source, // 原始ImageData对象像素索引
+            pixel_deviation; // 偏移后的ImageData对象像素索引
 
         // 交互索引
         old_index = new_index;
@@ -225,7 +225,7 @@ function waterRipple(element, settings) {
                 // 计算当前像素点下一时刻的振幅
                 var amplitude = (top + bottom + left + right) >> 1;
                 amplitude -= _ripple_map[_new_index + i];
-                amplitude -= amplitude >> _attenuation; // 计算衰减
+                amplitude -= amplitude >> _attenuation;
 
                 // 更新振幅数组
                 _ripple_map[_new_index + i] = amplitude;
@@ -292,7 +292,7 @@ function waterRipple(element, settings) {
         var amplitude = top + bottom + left + right;
         amplitude >>= 1;
         amplitude -= old_amplitude;
-        amplitude -= amplitude >> attenuation; // 计算衰减
+        amplitude -= amplitude >> attenuation;
 
         return amplitude;
     }
@@ -306,12 +306,12 @@ function waterRipple(element, settings) {
 }
 
 function main() {
-    // div
     var divPop = document.getElementById("pop"),
         divRain = document.getElementById("rain"),
         divSea = document.getElementById("sea"),
         divAncientry = document.getElementById("ancientry"),
         divPast = document.getElementById("past"),
+        divTime = document.getElementById("time"),
         divSkyline = document.getElementById("skyline"),
         divStars = document.getElementById("stars"),
         divTravel = document.getElementById("travel"),
@@ -320,15 +320,13 @@ function main() {
         divView = document.getElementById("view"),
         divNote = document.getElementById("note");
 
-    // params for waterRipple
     var settings = {
         image: "image/background.png",
         width: 340,
         height: 544
     };
 
-    // init
-    var playlist = [divRain, divSea, divAncientry, divPast, divSkyline, divStars, divTravel, divBeethoven],
+    var playlist = [divRain, divSea, divAncientry, divPast, divTime, divSkyline, divStars, divTravel, divBeethoven],
         len = playlist.length, curr = 0, count = 0, limit = 4,
         isClicked = false, isPlayed = false,
         waterRippleEffect = new waterRipple(divView, settings);
@@ -380,7 +378,6 @@ function main() {
 
     animateElement($("#bubble"), settings);
 
-    // on click
     divBubble.onclick = function () {
         explodeTimer = setInterval(function () {
             if (!isClicked) {
@@ -422,12 +419,10 @@ function main() {
         }
     };
 
-    // on mousemove
     divView.onmousemove = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
     };
 
-    // on touchmove
     divView.ontouchmove = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
     };
