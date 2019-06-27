@@ -340,11 +340,11 @@ function main() {
             });
         }
 
-        divView.addEventListener("ended", function () {
+        audio.onended = function () {
             if (next) {
                 curr = nextAudio(len, curr);
             }
-        });
+        };
     }
 
     function stopAudio(audio) {
@@ -353,8 +353,6 @@ function main() {
     }
 
     function nextAudio(len, curr) {
-        stopAudio(playlist[curr]);
-
         if (++curr >= len) {
             curr = 0;
         }
@@ -409,22 +407,22 @@ function main() {
         }
     };
 
-    divView.addEventListener("click", function (e) {
+    divView.onclick = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
 
         if (isPlayed && ++count >= limit) {
             count = 0;
             curr = shuffleAudio(len, curr);
         }
-    });
+    };
 
-    divView.addEventListener("mousemove", function (e) {
+    divView.onmousemove = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
-    });
+    };
 
-    divView.addEventListener("touchmove", function (e) {
+    divView.ontouchmove = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
-    });
+    };
 }
 
 main();
