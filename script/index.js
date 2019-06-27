@@ -340,11 +340,11 @@ function main() {
             });
         }
 
-        audio.onended = function () {
+        divView.addEventListener("ended", function () {
             if (next) {
                 curr = nextAudio(len, curr);
             }
-        };
+        });
     }
 
     function stopAudio(audio) {
@@ -409,22 +409,22 @@ function main() {
         }
     };
 
-    divView.onclick = function (e) {
+    divView.addEventListener("click", function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
 
         if (isPlayed && ++count >= limit) {
             count = 0;
             curr = shuffleAudio(len, curr);
         }
-    };
+    });
 
-    divView.onmousemove = function (e) {
+    divView.addEventListener("mousemove", function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
-    };
+    });
 
-    divView.ontouchmove = function (e) {
+    divView.addEventListener("touchmove", function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
-    };
+    });
 }
 
 main();
