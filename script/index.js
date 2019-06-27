@@ -418,7 +418,7 @@ function main() {
         }
     };
 
-    divView.ontouchmove = function (e) {
+    divView.onmousemove = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
     };
 }
