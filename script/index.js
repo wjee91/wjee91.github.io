@@ -341,9 +341,7 @@ function main() {
         }
 
         audio.onended = function () {
-            if (next) {
-                curr = nextAudio(len, curr);
-            }
+            curr = nextAudio(len, curr);
         };
     }
 
@@ -353,8 +351,6 @@ function main() {
     }
 
     function nextAudio(len, curr) {
-        stopAudio(playlist[curr]);
-
         if (++curr >= len) {
             curr = 0;
         }
@@ -404,7 +400,6 @@ function main() {
         if (!isPlayed) {
             isPlayed = true;
             playAudio(divPop, false);
-            playAudio(playlist[curr], true);
             typing(divNote);
         }
     };
