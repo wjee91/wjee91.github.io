@@ -353,6 +353,8 @@ function main() {
     }
 
     function nextAudio(len, curr) {
+        stopAudio(playlist[curr]);
+
         if (++curr >= len) {
             curr = 0;
         }
