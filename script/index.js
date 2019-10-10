@@ -1,6 +1,6 @@
 function calcPos(element, settings) {
-    var x = Math.ceil(Math.random() * (settings.width - element.width() * 1.5 - 80)) + settings.left + 40,
-        y = Math.ceil(Math.random() * (settings.height - element.height() * 1.5 - 80)) + settings.top + 40;
+    var x = Math.ceil(Math.random() * (settings.width - element.width() * 1.5 - settings.margin * 2)) + settings.left + settings.margin,
+        y = Math.ceil(Math.random() * (settings.height - element.height() * 1.5 - settings.margin * 2)) + settings.top + settings.margin;
 
     return [x, y];
 }
@@ -53,6 +53,7 @@ function waterRipple(element, settings) {
     // 默认设置
     var defaults = {
         image: "",
+        margin: 0,
         left: 0,
         top: 0,
         width: 320,
@@ -308,6 +309,7 @@ function waterRipple(element, settings) {
 function main() {
     var settings = {
         image: "image/background.png",
+        margin: 40,
         left: 10,
         top: 10,
         width: 340,
