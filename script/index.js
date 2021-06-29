@@ -331,7 +331,7 @@ function main() {
         divBeethoven = document.getElementById("beethoven");
 
     var playlist = [divRain, divSea, divAncientry, divPast, divTime, divSkyline, divStars, divTravel, divBeethoven],
-        len = playlist.length, curr = 0, count = 0, limit = 4,
+        len = playlist.length, curr = 0, cnt = 0, lmt = 4,
         isClicked = false, isPlayed = false,
         waterRippleEffect = new waterRipple(divView, settings);
 
@@ -417,8 +417,8 @@ function main() {
     divView.onclick = function (e) {
         waterRippleEffect.disturb(e.layerX, e.layerY);
 
-        if (isPlayed && ++count >= limit) {
-            count = 0;
+        if (isPlayed && ++cnt >= lmt) {
+            cnt = 0;
             curr = shuffleAudio(len, curr);
         }
     };
